@@ -39,10 +39,10 @@ Read in our [data from a Google Spreadsheet](https://docs.google.com/spreadsheet
 file <- "https://docs.google.com/spreadsheets/d/1-w62GXvKwQ868dwiMVzgPdLYbgSkXxSqasE-YoaGOUc/edit#gid=0"
 
 gs4_deauth() # not a private sheet, so no need for authentication
-dat <- as.data.frame(read_sheet(file)) %>%  ### INPUT DATA from googlesheet 
+alldat <- as.data.frame(read_sheet(file)) %>%  ### INPUT DATA from googlesheet 
          filter(!is.na(measurer))			# remove spacer rows
 
-dat %<>% mutate_at(c("measurer", "session", "jr"), as.factor) %>%
+alldat %<>% mutate_at(c("measurer", "session", "jr"), as.factor) %>%
     mutate( shape = case_when( measurer=="JR" ~ 25, measurer!="JR" ~ 19 )) %>%
     mutate( shape = as.factor(shape))
 
@@ -53,7 +53,7 @@ dat %<>% mutate_at(c("measurer", "session", "jr"), as.factor) %>%
 This requires two full sets of measurements, so this is still in progress. 
 
 ```{r}
-mod <- with(dat, summary(aov(lm( svl ~ jr ))))
+mod <- with(alldat, summary(aov(lm( svl ~ jr ))))
 
 s2_within <- ms_within <- mod[[1]][2,3]
 s2_within
@@ -64,13 +64,15 @@ ME <- s2_within/(s2_within+s2_among) * 100
 ME
 ```
 
-## Plots of measurements from the first session
+## Validating Landmarks
 
-Plot all of our data against the original dataset (JR in green), as well as faceted by individual.
+Plot all of our data against the original dataset (JR in green), as well as faceted by individual. The goal here is to validate the landmarks.
 
 This function creates the plots that are repeated for each morphometric variable.
 
 ```{r}
+dat <- alldat %>% filter(session==0|measurer=="JR")
+
 p <- dat %>% ggplot(aes(svl, femur, color=measurer, label=jr))
 v <- dat %>% ggplot(aes(jr, svl, group=jr, color=measurer, shape=measurer))
 
@@ -255,3 +257,159 @@ Looks good!
 ## Conclusions
 
 We need to confirm the landmarks JR used for the limb segment and head length measurements (foot and hand are OK). It looks promising for repeatability but we need to confirm after we get two full sets of measurements. 
+
+# Session 1
+
+```{r}
+dat <- alldat %>% filter(session==1|measurer=="JR")
+```
+
+Set up the ggplots: 
+
+```{r}
+femp <- dat %>% ggplot(aes(svl, femur, color=measurer, label=jr))
+tibp <- dat %>% ggplot(aes(svl, tibiofibula, color=measurer, label=jr))
+tarp <- dat %>% ggplot(aes(svl, tarsus, color=measurer, label=jr))
+footp <- dat %>% ggplot(aes(svl, foot, color=measurer, label=jr))
+hwp <- dat %>% ggplot(aes(svl, headW, color=measurer, label=jr))
+hlp <- dat %>% ggplot(aes(svl, headL, color=measurer, label=jr))
+hump <- dat %>% ggplot(aes(svl, humerus, color=measurer, label=jr))
+radp <- dat %>% ggplot(aes(svl, radioulna, color=measurer, label=jr))
+handp <- dat %>% ggplot(aes(svl, hand, color=measurer, label=jr))
+
+sv <- dat %>% ggplot(aes(jr, svl, group=jr, color=measurer, shape=measurer))
+femv <- dat %>% ggplot(aes(jr, femur, group=jr, color=measurer, shape=measurer))
+tibv <- dat %>% ggplot(aes(jr, tibiofibula, group=jr, color=measurer, shape=measurer))
+tarv <- dat %>% ggplot(aes(jr, tarsus, group=jr, color=measurer, shape=measurer))
+footv <- dat %>% ggplot(aes(jr, foot, group=jr, color=measurer, shape=measurer))
+hwv <- dat %>% ggplot(aes(jr, headW, group=jr, color=measurer, shape=measurer))
+hlv <- dat %>% ggplot(aes(jr, headL, group=jr, color=measurer, shape=measurer))
+humv <- dat %>% ggplot(aes(jr, humerus, group=jr, color=measurer, shape=measurer))
+radv <- dat %>% ggplot(aes(jr, radioulna, group=jr, color=measurer, shape=measurer))
+handv <- dat %>% ggplot(aes(jr, hand, group=jr, color=measurer, shape=measurer))
+```
+
+### SVL
+
+```{r}
+#| warning: false
+make_violins(sv)
+```
+Looks like everyoneʻs SVL are a little short. Basically JR304 and JR306 match well, but the others, JR308, JR311, JR320, JR321, JR322, JR324 are a little short. Did he press them down? Or use a ruler?  
+
+
+### Femur
+
+```{r}
+#| warning: false
+make_violins(femv)
+```
+```{r}
+#| warning: false
+make_plots( femp )
+```
+Looks like my femur measurements (MB) are a little short - JR must have measured from the vent rather than from the midline perpendicular to the femur. 
+
+### Tibiofibula
+
+```{r}
+#| warning: false
+make_violins(tibv)
+```
+```{r}
+#| warning: false
+make_plots( tibp )
+```
+Tibiofibula looks good, except for what looks like a typo in DGʻs data?
+
+### Tarsus
+
+```{r}
+#| warning: false
+make_violins(tarv)
+```
+```{r}
+#| warning: false
+make_plots( tarp )
+```
+Not sure what I did! Lol. Good example of the unfortunate outlier being the largest throwing the whole trend off. 
+
+### Foot
+
+```{r}
+#| warning: false
+make_violins(footv)
+```
+```{r}
+#| warning: false
+make_plots( footp )
+```
+Looks good! 
+
+### Head Width
+
+```{r}
+#| warning: false
+make_violins(hwv)
+```
+```{r}
+#| warning: false
+make_plots( hwp )
+```
+
+Looks good!
+
+### Head Length
+
+```{r}
+#| warning: false
+make_violins(hlv)
+```
+```{r}
+#| warning: false
+make_plots( hlp )
+```
+
+Oh oh. We are not using the right Head Length landmark.
+
+### Humerus
+
+```{r}
+#| warning: false
+make_violins(humv)
+```
+```{r}
+#| warning: false
+make_plots( hump )
+```
+
+Hmm. We are all a little consistently lower than JR, some more so.
+
+### Radioulna
+
+```{r}
+#| warning: false
+make_violins(radv)
+```
+```{r}
+#| warning: false
+make_plots( radp)
+```
+
+Need to work on this one too.
+
+### Hand
+```{r}
+#| warning: false
+make_violins(handv)
+```
+```{r}
+#| warning: false
+make_plots( handp )
+```
+Looks good!
+
+## Conclusions
+
+We need to confirm the landmarks JR used for the limb segment and head length measurements (foot and hand are OK). It looks promising for repeatability but we need to confirm after we get two full sets of measurements. 
+
