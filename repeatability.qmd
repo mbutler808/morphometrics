@@ -42,7 +42,10 @@ gs4_deauth() # not a private sheet, so no need for authentication
 dat <- as.data.frame(read_sheet(file)) %>%  ### INPUT DATA from googlesheet 
          filter(!is.na(measurer))			# remove spacer rows
 
-dat %<>% mutate_at(c("measurer", "session", "jr"), as.factor) 		  
+dat %<>% mutate_at(c("measurer", "session", "jr"), as.factor) %>%
+    mutate( shape = case_when( measurer=="JR" ~ 25, measurer!="JR" ~ 19 )) %>%
+    mutate( shape = as.factor(shape))
+
 ```
 
 ## Repeatability 
@@ -69,8 +72,18 @@ This function creates the plots that are repeated for each morphometric variable
 
 ```{r}
 p <- dat %>% ggplot(aes(svl, femur, color=measurer, label=jr))
+v <- dat %>% ggplot(aes(jr, svl, group=jr, color=measurer, shape=measurer))
 
-make_plot <- function(p) {
+make_violins <- function(v) {
+
+ v + geom_violin() + 
+  geom_jitter(aes(x=jr, color=measurer, shape=measurer, size=measurer), width=.2) + 
+  scale_shape_manual(values=c(19,19,17,19,19,19)) +
+  scale_size_manual(values=c(3,3,5,3,3,3))
+
+}
+
+make_plots <- function(p, v) {
   q1 <- p + geom_point(size = 3) + 
 	geom_smooth( aes(group=measurer), method="lm", alpha=.1) + 	
 	geom_text(nudge_y = .15) +
@@ -82,8 +95,15 @@ make_plot <- function(p) {
 	facet_grid( measurer ~ . ) +
 	theme_bw()
 
-  plot_grid(q1, q2, labels="AUTO")	
-}
+   plot_grid(q1, q2, labels="AUTO")	
+
+ }
+
+# q3 <- v + geom_violin() + 
+#  geom_jitter(aes(x=jr, color=measurer, shape=measurer), size=3, width=.2) + 
+#  scale_shape_manual(values=c(19,19,17,19,19,19)) 
+
+# q3
 ```
 Set up the ggplots: 
 
@@ -97,25 +117,51 @@ hlp <- dat %>% ggplot(aes(svl, headL, color=measurer, label=jr))
 hump <- dat %>% ggplot(aes(svl, humerus, color=measurer, label=jr))
 radp <- dat %>% ggplot(aes(svl, radioulna, color=measurer, label=jr))
 handp <- dat %>% ggplot(aes(svl, hand, color=measurer, label=jr))
+
+sv <- dat %>% ggplot(aes(jr, svl, group=jr, color=measurer, shape=measurer))
+femv <- dat %>% ggplot(aes(jr, femur, group=jr, color=measurer, shape=measurer))
+tibv <- dat %>% ggplot(aes(jr, tibiofibula, group=jr, color=measurer, shape=measurer))
+tarv <- dat %>% ggplot(aes(jr, tarsus, group=jr, color=measurer, shape=measurer))
+footv <- dat %>% ggplot(aes(jr, foot, group=jr, color=measurer, shape=measurer))
+hwv <- dat %>% ggplot(aes(jr, headW, group=jr, color=measurer, shape=measurer))
+hlv <- dat %>% ggplot(aes(jr, headL, group=jr, color=measurer, shape=measurer))
+humv <- dat %>% ggplot(aes(jr, humerus, group=jr, color=measurer, shape=measurer))
+radv <- dat %>% ggplot(aes(jr, radioulna, group=jr, color=measurer, shape=measurer))
+handv <- dat %>% ggplot(aes(jr, hand, group=jr, color=measurer, shape=measurer))
 ```
 
 Make plots:
+
+### SVL
+
+```{r}
+#| warning: false
+make_violins(sv)
+```
+Looks like everyoneʻs SVL are a little short. Basically JR304 and JR306 match well, but the others, JR308, JR311, JR320, JR321, JR322, JR324 are a little short. Did he press them down? Or use a ruler?  
+
 
 ### Femur
 
 ```{r}
 #| warning: false
-make_plot( femp )
+make_violins(femv)
 ```
-Looks like everyoneʻs SVL are a little short. Basically JR304 and JR306 match well, but the others, JR308, JR311, JR320, JR321, JR322, JR324 are a little short. Did he press them down? Or use a ruler? 
-
+```{r}
+#| warning: false
+make_plots( femp )
+```
 Looks like my femur measurements (MB) are a little short - JR must have measured from the vent rather than from the midline perpendicular to the femur. 
 
 ### Tibiofibula
 
 ```{r}
 #| warning: false
-make_plot( tibp )
+make_violins(tibv)
+```
+```{r}
+#| warning: false
+make_plots( tibp )
 ```
 Tibiofibula looks good, except for what looks like a typo in DGʻs data?
 
@@ -123,7 +169,11 @@ Tibiofibula looks good, except for what looks like a typo in DGʻs data?
 
 ```{r}
 #| warning: false
-make_plot( tarp )
+make_violins(tarv)
+```
+```{r}
+#| warning: false
+make_plots( tarp )
 ```
 Not sure what I did! Lol. Good example of the unfortunate outlier being the largest throwing the whole trend off. 
 
@@ -131,7 +181,11 @@ Not sure what I did! Lol. Good example of the unfortunate outlier being the larg
 
 ```{r}
 #| warning: false
-make_plot( footp )
+make_violins(footv)
+```
+```{r}
+#| warning: false
+make_plots( footp )
 ```
 Looks good! 
 
@@ -139,7 +193,11 @@ Looks good!
 
 ```{r}
 #| warning: false
-make_plot( hwp )
+make_violins(hwv)
+```
+```{r}
+#| warning: false
+make_plots( hwp )
 ```
 
 Looks good!
@@ -148,7 +206,11 @@ Looks good!
 
 ```{r}
 #| warning: false
-make_plot( hlp )
+make_violins(hlv)
+```
+```{r}
+#| warning: false
+make_plots( hlp )
 ```
 
 Oh oh. We are not using the right Head Length landmark.
@@ -157,7 +219,11 @@ Oh oh. We are not using the right Head Length landmark.
 
 ```{r}
 #| warning: false
-make_plot( hump )
+make_violins(humv)
+```
+```{r}
+#| warning: false
+make_plots( hump )
 ```
 
 Hmm. We are all a little consistently lower than JR, some more so.
@@ -166,7 +232,11 @@ Hmm. We are all a little consistently lower than JR, some more so.
 
 ```{r}
 #| warning: false
-make_plot( radp )
+make_violins(radv)
+```
+```{r}
+#| warning: false
+make_plots( radp)
 ```
 
 Need to work on this one too.
@@ -174,7 +244,11 @@ Need to work on this one too.
 ### Hand
 ```{r}
 #| warning: false
-make_plot( handp )
+make_violins(handv)
+```
+```{r}
+#| warning: false
+make_plots( handp )
 ```
 Looks good!
 
