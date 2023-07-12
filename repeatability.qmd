@@ -634,6 +634,12 @@ wrap_violin(hwv)
 wrap_violin(hlv)
 ```
 
+### Humerus
+```{r}
+#| warning: false
+wrap_violin(humv)
+```
+
 ### Radioulna
 ```{r}
 #| warning: false
