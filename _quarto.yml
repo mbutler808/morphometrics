@@ -1,0 +1,32 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Asterophryinae Morphometrics"
+  site-url: https://mbutler808.github.io
+  description: "Project website for a massive morphometrics study"
+  navbar:
+    right:
+      - text: "Home"
+        file: index.qmd
+      - text: "Landmarks and Measurements"
+        href: landmarks.qmd
+      - text: "Repeatability"
+        href: repeatability.qmd
+      - icon: github
+        href: https://github.com/mbutler808/morphometrics
+      - icon: twitter
+        href: https://twitter.com/mbutler808
+      - icon: rss
+        href: index.xml
+format:
+  html:
+    css: styles.css
+    theme: simplex
+    toc: true
+
+editor: visual
+
+execute:
+  freeze: auto

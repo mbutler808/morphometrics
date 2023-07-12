@@ -1,0 +1,35 @@
+---
+title: "Asterophryinae Morphometrics"
+image: images/Cophixalus_variabilis.JPG
+about:
+  template: trestles
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/mbutler808
+    - icon: github
+      text: Github
+      href: https://github.com/mbutler808/morphometrics
+
+---
+
+## Letʻs measure frogs! 
+
+If you are interested in measuring morphometrics on frogs, I hope you find this project website helpful. We are collecting morphometric data on microhylid frogs from the Papuan region (subfamily Asterophryinae) using calipers.
+
+
+## Getting started
+
+Please look over the definition of the measurements and [Landmarks](landmarks.qmd) and assessing [Repeatability](repeatability.qmd). Assessing repeatability is important for morphometric analyses in general and absolutely critical when multiple investigators are taking measurements.
+
+## Acknowledgements
+
+This course was developed and is maintained by [Marguerite Butler](https://butlerlab.org).
+
+Many thanks to the many people who helped:
+Julio Rivera who developed the landmarks and collected an extensive dataset. Ethan Hill and Claire Fraser contributed additional data. 
+Allison Fisher, Ke Cao, Diana Gao, and Kaitlyn Sato assisted with refining the landmarks.
+Allison Fisher and Marguerite Butler contributed to the formal definitions of the landmarks and the landmark document. 
+
+
+

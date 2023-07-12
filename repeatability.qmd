@@ -7,8 +7,10 @@ author:
     affiliation_url: https://manoa.hawaii.edu/lifesciences/
 description: "Within and between measurer repeatability for the ecomorph analysis"
 date: "`r format(Sys.Date())`"
+toc: true
 format: 
-  html: default
+  html: 
+    embed-resources: true
   pdf: default
 ---
 
@@ -28,6 +30,7 @@ require( googlesheets4 )
 require(dplyr)
 require(magrittr)
 require(ggplot2)
+require(reshape2)
 require(cowplot)
 
 if(dir.exists("output")!=TRUE) dir.create("output") # check if output directory out exists, if false create
@@ -46,6 +49,11 @@ alldat %<>% mutate_at(c("measurer", "session", "jr"), as.factor) %>%
     mutate( shape = case_when( measurer=="JR" ~ 25, measurer!="JR" ~ 19 )) %>%
     mutate( shape = as.factor(shape))
 
+jrblock <- alldat[alldat$measurer=="JR",]  # copy JR data into all sessions (0,1,2)
+jrblock2 <- jrblock0 <- jrblock
+jrblock0$session <- 0    
+jrblock2$session <- 2
+alldat <- rbind(alldat, jrblock0, jrblock2)
 ```
 
 ## Repeatability 
@@ -64,26 +72,16 @@ ME <- s2_within/(s2_within+s2_among) * 100
 ME
 ```
 
-## Validating Landmarks
+# Functions 
 
-Plot all of our data against the original dataset (JR in green), as well as faceted by individual. The goal here is to validate the landmarks.
-
-This function creates the plots that are repeated for each morphometric variable.
+These function creates the plots that are repeated for each morphometric variable.
 
 ```{r}
-dat <- alldat %>% filter(session==0|measurer=="JR")
+dat <- alldat %>% filter(session==0)
 
 p <- dat %>% ggplot(aes(svl, femur, color=measurer, label=jr))
 v <- dat %>% ggplot(aes(jr, svl, group=jr, color=measurer, shape=measurer))
 
-make_violins <- function(v) {
-
- v + geom_violin() + 
-  geom_jitter(aes(x=jr, color=measurer, shape=measurer, size=measurer), width=.2) + 
-  scale_shape_manual(values=c(19,19,17,19,19,19)) +
-  scale_size_manual(values=c(3,3,5,3,3,3))
-
-}
 
 make_plots <- function(p, v) {
   q1 <- p + geom_point(size = 3) + 
@@ -101,15 +99,20 @@ make_plots <- function(p, v) {
 
  }
 
-# q3 <- v + geom_violin() + 
-#  geom_jitter(aes(x=jr, color=measurer, shape=measurer), size=3, width=.2) + 
-#  scale_shape_manual(values=c(19,19,17,19,19,19)) 
+make_violins <- function(v) {
 
-# q3
+ v + geom_violin() + 
+  geom_jitter(aes(x=jr, color=measurer, shape=measurer, size=measurer), width=.2) + 
+  scale_shape_manual(values=c(19,19,17,19,19,19)) +
+  scale_size_manual(values=c(3,3,5,3,3,3))
+
+}
 ```
 Set up the ggplots: 
 
 ```{r}
+dat <- alldat %>% filter(session==0)  # filter just for session 0 (naive)
+ 
 femp <- dat %>% ggplot(aes(svl, femur, color=measurer, label=jr))
 tibp <- dat %>% ggplot(aes(svl, tibiofibula, color=measurer, label=jr))
 tarp <- dat %>% ggplot(aes(svl, tarsus, color=measurer, label=jr))
@@ -119,20 +122,22 @@ hlp <- dat %>% ggplot(aes(svl, headL, color=measurer, label=jr))
 hump <- dat %>% ggplot(aes(svl, humerus, color=measurer, label=jr))
 radp <- dat %>% ggplot(aes(svl, radioulna, color=measurer, label=jr))
 handp <- dat %>% ggplot(aes(svl, hand, color=measurer, label=jr))
-
-sv <- dat %>% ggplot(aes(jr, svl, group=jr, color=measurer, shape=measurer))
-femv <- dat %>% ggplot(aes(jr, femur, group=jr, color=measurer, shape=measurer))
-tibv <- dat %>% ggplot(aes(jr, tibiofibula, group=jr, color=measurer, shape=measurer))
-tarv <- dat %>% ggplot(aes(jr, tarsus, group=jr, color=measurer, shape=measurer))
-footv <- dat %>% ggplot(aes(jr, foot, group=jr, color=measurer, shape=measurer))
-hwv <- dat %>% ggplot(aes(jr, headW, group=jr, color=measurer, shape=measurer))
-hlv <- dat %>% ggplot(aes(jr, headL, group=jr, color=measurer, shape=measurer))
-humv <- dat %>% ggplot(aes(jr, humerus, group=jr, color=measurer, shape=measurer))
-radv <- dat %>% ggplot(aes(jr, radioulna, group=jr, color=measurer, shape=measurer))
-handv <- dat %>% ggplot(aes(jr, hand, group=jr, color=measurer, shape=measurer))
+  
+sv <- dat %>% ggplot(aes(jr, svl, group=jr))
+femv <- dat %>% ggplot(aes(jr, femur, group=jr))
+tibv <- dat %>% ggplot(aes(jr, tibiofibula, group=jr))
+tarv <- dat %>% ggplot(aes(jr, tarsus, group=jr))
+footv <- dat %>% ggplot(aes(jr, foot, group=jr))
+hwv <- dat %>% ggplot(aes(jr, headW, group=jr))
+hlv <- dat %>% ggplot(aes(jr, headL, group=jr))
+humv <- dat %>% ggplot(aes(jr, humerus, group=jr))
+radv <- dat %>% ggplot(aes(jr, radioulna, group=jr))
+handv <- dat %>% ggplot(aes(jr, hand, group=jr))
 ```
 
-Make plots:
+# Validating Landmarks (session 0)
+
+Plot all of our data against the original dataset (JR in green), as well as faceted by individual. The goal here is to validate the landmarks.  
 
 ### SVL
 
@@ -142,6 +147,7 @@ make_violins(sv)
 ```
 Looks like everyoneʻs SVL are a little short. Basically JR304 and JR306 match well, but the others, JR308, JR311, JR320, JR321, JR322, JR324 are a little short. Did he press them down? Or use a ruler?  
 
+Diana and Ke investigated and found that __gently pressing on the frog__ was necessary to reapeat JRʻs measurements. Just enough to maximize the length. 
 
 ### Femur
 
@@ -155,6 +161,8 @@ make_plots( femp )
 ```
 Looks like my femur measurements (MB) are a little short - JR must have measured from the vent rather than from the midline perpendicular to the femur. 
 
+The landmarks are from __the edge of the knee to the midline at the vent__. 
+
 ### Tibiofibula
 
 ```{r}
@@ -167,6 +175,8 @@ make_plots( tibp )
 ```
 Tibiofibula looks good, except for what looks like a typo in DGʻs data?
 
+We measured the bone, from end to end.
+
 ### Tarsus
 
 ```{r}
@@ -178,6 +188,7 @@ make_violins(tarv)
 make_plots( tarp )
 ```
 Not sure what I did! Lol. Good example of the unfortunate outlier being the largest throwing the whole trend off. 
+A few measurers are off on some specimens.
 
 ### Foot
 
@@ -202,7 +213,7 @@ make_violins(hwv)
 make_plots( hwp )
 ```
 
-Looks good!
+Looks good! Measured at the widest part of the head or at the center of the tympanum (no further back than the tympanum). 
 
 ### Head Length
 
@@ -217,6 +228,8 @@ make_plots( hlp )
 
 Oh oh. We are not using the right Head Length landmark.
 
+Diana and Ke discovered the the measurement is from the tip of the snout to the center of the tympanum.
+
 ### Humerus
 
 ```{r}
@@ -229,6 +242,8 @@ make_plots( hump )
 ```
 
 Hmm. We are all a little consistently lower than JR, some more so.
+
+The landmark for the end of the humerus can be most easily found by gently pressing the caliper onto the chest, which will move the arm. It is from __the articulation of the humerus with the scapula to the edge of the elbow__. 
 
 ### Radioulna
 
@@ -260,13 +275,11 @@ We need to confirm the landmarks JR used for the limb segment and head length me
 
 # Session 1
 
-```{r}
-dat <- alldat %>% filter(session==1|measurer=="JR")
-```
-
 Set up the ggplots: 
 
 ```{r}
+dat <- alldat %>% filter(session==1)
+
 femp <- dat %>% ggplot(aes(svl, femur, color=measurer, label=jr))
 tibp <- dat %>% ggplot(aes(svl, tibiofibula, color=measurer, label=jr))
 tarp <- dat %>% ggplot(aes(svl, tarsus, color=measurer, label=jr))
@@ -277,16 +290,16 @@ hump <- dat %>% ggplot(aes(svl, humerus, color=measurer, label=jr))
 radp <- dat %>% ggplot(aes(svl, radioulna, color=measurer, label=jr))
 handp <- dat %>% ggplot(aes(svl, hand, color=measurer, label=jr))
 
-sv <- dat %>% ggplot(aes(jr, svl, group=jr, color=measurer, shape=measurer))
-femv <- dat %>% ggplot(aes(jr, femur, group=jr, color=measurer, shape=measurer))
-tibv <- dat %>% ggplot(aes(jr, tibiofibula, group=jr, color=measurer, shape=measurer))
-tarv <- dat %>% ggplot(aes(jr, tarsus, group=jr, color=measurer, shape=measurer))
-footv <- dat %>% ggplot(aes(jr, foot, group=jr, color=measurer, shape=measurer))
-hwv <- dat %>% ggplot(aes(jr, headW, group=jr, color=measurer, shape=measurer))
-hlv <- dat %>% ggplot(aes(jr, headL, group=jr, color=measurer, shape=measurer))
-humv <- dat %>% ggplot(aes(jr, humerus, group=jr, color=measurer, shape=measurer))
-radv <- dat %>% ggplot(aes(jr, radioulna, group=jr, color=measurer, shape=measurer))
-handv <- dat %>% ggplot(aes(jr, hand, group=jr, color=measurer, shape=measurer))
+sv <- dat %>% ggplot(aes(jr, svl, group=jr))
+femv <- dat %>% ggplot(aes(jr, femur, group=jr))
+tibv <- dat %>% ggplot(aes(jr, tibiofibula, group=jr))
+tarv <- dat %>% ggplot(aes(jr, tarsus, group=jr))
+footv <- dat %>% ggplot(aes(jr, foot, group=jr))
+hwv <- dat %>% ggplot(aes(jr, headW, group=jr))
+hlv <- dat %>% ggplot(aes(jr, headL, group=jr))
+humv <- dat %>% ggplot(aes(jr, humerus, group=jr))
+radv <- dat %>% ggplot(aes(jr, radioulna, group=jr))
+handv <- dat %>% ggplot(aes(jr, hand, group=jr))
 ```
 
 ### SVL
@@ -295,8 +308,7 @@ handv <- dat %>% ggplot(aes(jr, hand, group=jr, color=measurer, shape=measurer))
 #| warning: false
 make_violins(sv)
 ```
-Looks like everyoneʻs SVL are a little short. Basically JR304 and JR306 match well, but the others, JR308, JR311, JR320, JR321, JR322, JR324 are a little short. Did he press them down? Or use a ruler?  
-
+Much better!
 
 ### Femur
 
@@ -308,7 +320,7 @@ make_violins(femv)
 #| warning: false
 make_plots( femp )
 ```
-Looks like my femur measurements (MB) are a little short - JR must have measured from the vent rather than from the midline perpendicular to the femur. 
+Better!
 
 ### Tibiofibula
 
@@ -320,7 +332,7 @@ make_violins(tibv)
 #| warning: false
 make_plots( tibp )
 ```
-Tibiofibula looks good, except for what looks like a typo in DGʻs data?
+Better!
 
 ### Tarsus
 
@@ -332,7 +344,7 @@ make_violins(tarv)
 #| warning: false
 make_plots( tarp )
 ```
-Not sure what I did! Lol. Good example of the unfortunate outlier being the largest throwing the whole trend off. 
+Better but Diana still a bit low and Ke a bit high
 
 ### Foot
 
@@ -344,7 +356,7 @@ make_violins(footv)
 #| warning: false
 make_plots( footp )
 ```
-Looks good! 
+Still good! 
 
 ### Head Width
 
@@ -357,7 +369,7 @@ make_violins(hwv)
 make_plots( hwp )
 ```
 
-Looks good!
+Good. I may have been too generous.
 
 ### Head Length
 
@@ -370,7 +382,7 @@ make_violins(hlv)
 make_plots( hlp )
 ```
 
-Oh oh. We are not using the right Head Length landmark.
+Much better! 
 
 ### Humerus
 
@@ -383,7 +395,7 @@ make_violins(humv)
 make_plots( hump )
 ```
 
-Hmm. We are all a little consistently lower than JR, some more so.
+Several folks are still a bit low. 
 
 ### Radioulna
 
@@ -396,7 +408,7 @@ make_violins(radv)
 make_plots( radp)
 ```
 
-Need to work on this one too.
+Now looks like random error, still a bit high though.
 
 ### Hand
 ```{r}
@@ -407,9 +419,230 @@ make_violins(handv)
 #| warning: false
 make_plots( handp )
 ```
-Looks good!
 
-## Conclusions
+Now looks like random error.
 
-We need to confirm the landmarks JR used for the limb segment and head length measurements (foot and hand are OK). It looks promising for repeatability but we need to confirm after we get two full sets of measurements. 
+# Session 2
+
+
+```{r}
+dat <- alldat %>% filter(session==2)
+
+femp <- dat %>% ggplot(aes(svl, femur, color=measurer, label=jr))
+tibp <- dat %>% ggplot(aes(svl, tibiofibula, color=measurer, label=jr))
+tarp <- dat %>% ggplot(aes(svl, tarsus, color=measurer, label=jr))
+footp <- dat %>% ggplot(aes(svl, foot, color=measurer, label=jr))
+hwp <- dat %>% ggplot(aes(svl, headW, color=measurer, label=jr))
+hlp <- dat %>% ggplot(aes(svl, headL, color=measurer, label=jr))
+hump <- dat %>% ggplot(aes(svl, humerus, color=measurer, label=jr))
+radp <- dat %>% ggplot(aes(svl, radioulna, color=measurer, label=jr))
+handp <- dat %>% ggplot(aes(svl, hand, color=measurer, label=jr))
+
+sv <- dat %>% ggplot(aes(jr, svl, group=jr))
+femv <- dat %>% ggplot(aes(jr, femur, group=jr))
+tibv <- dat %>% ggplot(aes(jr, tibiofibula, group=jr))
+tarv <- dat %>% ggplot(aes(jr, tarsus, group=jr))
+footv <- dat %>% ggplot(aes(jr, foot, group=jr))
+hwv <- dat %>% ggplot(aes(jr, headW, group=jr))
+hlv <- dat %>% ggplot(aes(jr, headL, group=jr))
+humv <- dat %>% ggplot(aes(jr, humerus, group=jr))
+radv <- dat %>% ggplot(aes(jr, radioulna, group=jr))
+handv <- dat %>% ggplot(aes(jr, hand, group=jr))
+```
+
+### SVL
+
+```{r}
+#| warning: false
+make_violins(sv)
+```
+Much better!
+
+### Femur
+
+```{r}
+#| warning: false
+make_violins(femv)
+```
+```{r}
+#| warning: false
+make_plots( femp )
+```
+Better!
+
+### Tibiofibula
+
+```{r}
+#| warning: false
+make_violins(tibv)
+```
+```{r}
+#| warning: false
+make_plots( tibp )
+```
+Better!
+
+### Tarsus
+
+```{r}
+#| warning: false
+make_violins(tarv)
+```
+```{r}
+#| warning: false
+make_plots( tarp )
+```
+Better but Diana still a bit low and Ke a bit high
+
+### Foot
+
+```{r}
+#| warning: false
+make_violins(footv)
+```
+```{r}
+#| warning: false
+make_plots( footp )
+```
+Still good! 
+
+### Head Width
+
+```{r}
+#| warning: false
+make_violins(hwv)
+```
+```{r}
+#| warning: false
+make_plots( hwp )
+```
+
+Good. I may have been too generous.
+
+### Head Length
+
+```{r}
+#| warning: false
+make_violins(hlv)
+```
+```{r}
+#| warning: false
+make_plots( hlp )
+```
+
+Much better! 
+
+### Humerus
+
+```{r}
+#| warning: false
+make_violins(humv)
+```
+```{r}
+#| warning: false
+make_plots( hump )
+```
+
+Several folks are still a bit low. 
+
+### Radioulna
+
+```{r}
+#| warning: false
+make_violins(radv)
+```
+```{r}
+#| warning: false
+make_plots( radp )
+```
+
+Now looks like random error, still a bit high though.
+
+### Hand
+```{r}
+#| warning: false
+make_violins(handv)
+```
+```{r}
+#| warning: false
+make_plots( handp )
+```
+
+# All together 
+
+```{r}
+dat <- alldat 
+
+sv <- dat %>% ggplot(aes(jr, svl, group=jr))
+femv <- dat %>% ggplot(aes(jr, femur, group=jr))
+tibv <- dat %>% ggplot(aes(jr, tibiofibula, group=jr))
+tarv <- dat %>% ggplot(aes(jr, tarsus, group=jr))
+footv <- dat %>% ggplot(aes(jr, foot, group=jr))
+hwv <- dat %>% ggplot(aes(jr, headW, group=jr))
+hlv <- dat %>% ggplot(aes(jr, headL, group=jr))
+humv <- dat %>% ggplot(aes(jr, humerus, group=jr))
+radv <- dat %>% ggplot(aes(jr, radioulna, group=jr))
+handv <- dat %>% ggplot(aes(jr, hand, group=jr))
+
+wrap_violin <- function(v) { 
+  v + geom_violin() +
+    geom_jitter(aes(x=jr, color=measurer, shape=measurer, size=measurer), width=.2) + 
+    scale_shape_manual(values=c(19,19,17,19,19,19)) +
+    scale_size_manual(values=c(3,3,5,3,3,3)) +
+    facet_wrap(. ~ session )  
+}
+```
+
+### SVL
+
+```{r}
+#| warning: false
+wrap_violin(sv)
+```
+
+### Femur
+```{r}
+#| warning: false
+wrap_violin(femv)
+```
+### Tibiofibula
+```{r}
+#| warning: false
+wrap_violin(tibv)
+```
+### Tarsus
+```{r}
+#| warning: false
+wrap_violin(tarv)
+```
+
+### Foot
+```{r}
+#| warning: false
+wrap_violin(footv)
+```
+
+### Head Width
+```{r}
+#| warning: false
+wrap_violin(hwv)
+```
+
+### Head Length
+```{r}
+#| warning: false
+wrap_violin(hlv)
+```
+
+### Radioulna
+```{r}
+#| warning: false
+wrap_violin(radv)
+```
+
+### Hand
+```{r}
+#| warning: false
+wrap_violin(handv)
+```
 
