@@ -1,0 +1,99 @@
+Mwatebu, Normanby Island
+
+Austrochaperina_C aff. palmipes.1
+Callulops doriae complex sp.1
+Cophixalus desticans complex sp.1
+Cophixalus variabilis complex sp.1
+Cophixalus verrucosus complex sp.1
+Genyophryne aff. thomsoni.1
+Hylophorbus cf. rufescens.1
+Liophryne aff. dentata.1
+Mantophryne cf. lateralis.1
+Oreophryne_A sp.8
+Paedophryne titan
+
+Buyetai, Normanby Island
+
+Austrochaperina_C aff. palmipes.2
+Callulops doriae complex sp.1
+Cophixalus desticans complex sp.1
+Cophixalus variabilis complex sp.3
+Cophixalus verrucosus complex sp.2
+Genyophryne aff. thomsoni.2
+Hylophorbus cf. rufescens.1
+Liophryne aff. dentata.3
+Mantophryne cf. lateralis.1
+Oreophryne_B penelopia
+
+Saidowai, Normanby Island
+
+Oreophryne_A philosylleptoris
+
+Sibonai, Normanby Island 
+
+Mantophryne cf. lateralis.1
+
+Mt. Hobia, Normanby Island
+
+Oreophryne_B penelopia
+
+Maru Ruama, Mt. Gerebu
+
+Choerophryne gunnari
+Cophixalus sp.1
+Cophixalus sp.2
+Copiula sp.5
+Hylophorbus cf. rufescens.12
+Mantophryne cf. lateralis.4
+Oreophryne_A loriae
+Paedophryne sp.1
+Xenorhina sp.1
+
+Rondon Ridge, Mt. Hagen
+
+Asterophrys sp.
+Callulops sp.2
+Choerophryne darlingtoni complex sp.1
+Cophixalus cf. cryptotympanum
+Cophixalus darlingtoni
+Hylophorbus cf. rufescens.14
+
+Baiyer River 
+
+Hylophorbus cf. rufescens.13
+
+Cape Dinga Kamiali, Bowutu Mts.  
+
+Barygenys sp.
+
+Cliffside Camp Kamiali, Bowutu Mts. 
+
+Austrochaperina_C aff. palmipes.4
+Barygenys sp.
+Callulops personatus
+Choerophryne sp.
+Choerophryne sp.1
+Choerophryne sp.2
+Choerophryne sp.4
+Cophixalus cf. pipilans.2
+Cophixalus cheesmanae complex sp.2
+Cophixalus linnaeus
+Genyophryne aff. thomsoni.3
+Hylophorbus cf. rufescens.5
+Mantophryne cf. lateralis.5
+Oreophryne_A cf. geislerorum.2
+Paedophryne swiftorum complex sp.1
+Paedophryne swiftorum complex sp.2
+
+Pine Tree Camp Kamiali, Bowutu Mts. 
+
+Cophixalus tomaiodactylus
+
+Suzuki Track Kamiali, Bowutu Mts. 
+Barygenys atra
+Hylophorbus cf. rufescens.5
+
+Top Camp Kamiali, Bowutu Mts. 
+
+Choerophryne sp.3
+Cophixalus phaeobalius

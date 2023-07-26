@@ -1,0 +1,16 @@
+{
+  "hash": "bfee11bbc12c7e78ba97597e6638a5bc",
+  "result": {
+    "markdown": "---\ntitle: \"Repeability of Frog Morphometric Measurements\"\nauthor:\n  - name: Marguerite Butler and Kaitlyn Sato\n    url: https://butlerlab.org\n    affiliation: School of Life Sciences, University of Hawaii\n    affiliation_url: https://manoa.hawaii.edu/lifesciences/\ndescription: \"Toepads across genera\"\ndate: \"2023-07-25\"\ntoc: true\nformat: \n  html: \n    embed-resources: true\n  pdf: default\n---\n\n::: {.cell}\n\n:::\n\n\n\n# Toepads \n\nToepads are modified pads on the tips of the toes and fingers of many species of Asterophryinae frogs that help with clinging. Arboreal species have the most developed and largest toepads, whil some species (particularly fossorial or burrowing species) may have hardly and visible toepad. \n\nHere are some photos that we took under a dissecting scope and 32x and with 6x magnification by the camera. \n\n# Choerophryne\n\n::: {#fig-choero layout-ncol=3}\n\n![_Choerophryne sp. 2_ \"fast clicker\"](toepads/cliffside/Choerophryne_sp.2_fast_clicker_body_IMG_1262.JPG){#fig-choe2}\n\n![Finger pad](toepads/cliffside/Choerophryne sp.2_finger_IMG_0632.jpg){#fig-choe2fing}\n\n![Toe pad](toepads/cliffside/Choerophryne sp.2_toe_IMG_0634.jpg){#fig-choe2toe}\n\nToepads of a scansorial species with well-developed toepads. Many arboreal and scansorial species have larger finger pads than toe pads. It is from Cliffside camp, Kamiali on the EPCT of the mainland.\n:::\n\n# Cophixalus\n\n::: {#fig-cheese layout-ncol=2}\n\n![Finger pad](toepads/cliffside/Cophixalus cheesmanae complex sp.2_finger_IMG_0635.jpg){#fig-cophcheesefing}\n\n![Toe pad](toepads/cliffside/Cophixalus cheesmanae complex sp.2_toe_IMG_0636.jpg){#fig-cophcheesetoe}\n\n_Cophixalus cheesemanae_ is a scansorial _Cophixalus_ often found on palms and even bananas. It is a good climber. From Cliffside camp, Kamiali. \n:::\n\n# Callulops\n\n::: {#fig-callulops layout-ncol=2}\n\n![Finger pad](toepads/cliffside/Callulops_personatus_finger_IMG_0654.jpg){#fig-callulopsfing}\n\n![Toe pad](toepads/cliffside/Callulops_personatus_toe_IMG_0656.jpg){#fig-callulopstoe}\n\n_Callulops personatus_ is a large fossorial (burrowing) species. It is one of the largest of all Asterophryinae. It is hard to see toepads, there may be some modified skin that blends into the rest of the toe. From Cliffside camp, Kamiali. \n:::\n\n\n# Barygenys\n\n::: {#fig-barygenys layout-ncol=2}\n\n![Finger pad](toepads/cliffside/Barygenys sp_finger_IMG_0629.jpg){#fig-barygenysfing}\n\n![Toe pad](toepads/cliffside/Barygenys sp._toe_IMG_0630.jpg){#fig-barygenystoe}\n\n_Barygenys sp._ is a small fossorial (burrowing) species. It is really hard to see toepads as this is a small species. The contrast has been adjusted here to see the slight difference in skin texture. From Cliffside camp, Kamiali. \n:::\n\n\n\n",
+    "supporting": [
+      "toepads_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

@@ -12,6 +12,8 @@ website:
         file: index.qmd
       - text: "Landmarks and Measurements"
         href: landmarks.qmd
+      - text: "Toepads"
+        href: toepads.qmd
       - text: "Repeatability"
         href: repeatability.qmd
       - icon: github

@@ -1,7 +1,7 @@
 ---
-title: "Landmarks and Morphometric Measurements"
+title: "Landmarks for Morphometrics"
 author:
-  - name: Marguerite Butler
+  - name: Marguerite Butler and Allison Fisher
     url: https://butlerlab.org
     affiliation: School of Life Sciences, University of Hawaii
     affiliation_url: https://manoa.hawaii.edu/lifesciences/
@@ -75,11 +75,13 @@ Measure the tarsus from the flexed foot to the outer edge at the ankle. Note tha
 
 The foot includes the entire plantar surface to the end of the longest digit. It is only challenging because the toes are delicate, but letting it rest on your finger helps. If it is curled, do your best to straighten it out before measuring. Return to @tbl-morph.
 
-## Head Width
+## Head Landmarks
 
 ![Landmarks on the head](images/head.jpeg){#fig-head}
 
 Be sure that you can identify the tympanum (the external eardrum) on the side of the head behind the eye. The nares are the nostrils of the nose. 
+
+## Head Width
 
 ![Head width](images/headW.jpeg){#fig-headW}
 
