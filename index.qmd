@@ -24,7 +24,7 @@ Please look over the definition of the measurements and [Landmarks](landmarks.qm
 
 ## Acknowledgements
 
-This course was developed and is maintained by [Marguerite Butler](https://butlerlab.org).
+This website was developed and is maintained by [Marguerite Butler](https://butlerlab.org).
 
 Many thanks to the many people who helped:
 Julio Rivera who developed the landmarks and collected an extensive dataset. Ethan Hill and Claire Fraser contributed additional data. 

@@ -10,7 +10,8 @@ date: "`r format(Sys.Date())`"
 toc: true
 format: 
   html: 
-    embed-resources: false
+    embed-resources: true
+    pdf: default
 
 ---
 ```{r}
@@ -23,7 +24,19 @@ Toepads are modified pads on the tips of the toes and fingers of many species of
 
 Here are some photos that we took under a dissecting scope and 32x and with 6x magnification by the camera. 
 
-# Austrochaperina (semi-aquatic)
+Frogs also use different postures with their toepads depending on lifestyle. Whereas arboreal and scansorial frogs often have them flat against the surface (like suction cups), terrestrial and fossorial species often have them flexed on their toe tips (@fig-toeposture). 
+
+::: {#fig-toeposture layout-ncol=2}
+
+![arboreal _Oreophryne B penelopia_](toepads/buyetai/Oreophryne_B_penelopia_680_buyetai_DSCN1298.jpg)
+
+![fossorial _Xenorhina arboricola_](toepads/xenorhina_arboricola.jpg)
+
+Note how the arboreal species holds their toepads flat against the surface whereas terrestrial and fossorial species sometimes flex them on their toe tips
+:::
+
+
+# _Austrochaperina_ (semi-aquatic)
 
 ::: {#fig-austrochaperina layout-ncol=3}
 
@@ -36,21 +49,21 @@ Here are some photos that we took under a dissecting scope and 32x and with 6x m
 Toepads of a semi-aquatic species with well-developed toepads. It is from Buyetai, Normanby Island, PNG.
 :::
 
-# Choerophryne (scansorial)
+# _Choerophryne_ (scansorial)
 
 ::: {#fig-choerophryne layout-ncol=3}
 
-![_Choerophryne sp. 2_ "fast clicker"](toepads/cliffside/Choerophryne_sp.2_fast_clicker_body_IMG_1262.jpg){#fig-choe2}
+![_Choerophryne sp. 2_ "fast clicker"](toepads/cliffside/Choerophryne_sp.2_fast_clicker_body_IMG_1262.jpg)
 
-![Finger pad](toepads/cliffside/Choerophryne sp.2_finger_IMG_0632.jpg){#fig-choe2fing}
+![Finger pad](toepads/cliffside/Choerophryne sp.2_finger_IMG_0632.jpg)
 
-![Toe pad](toepads/cliffside/Choerophryne sp.2_toe_IMG_0634.jpg){#fig-choe2toe}
+![Toe pad](toepads/cliffside/Choerophryne sp.2_toe_IMG_0634.jpg)
 
 Toepads of a scansorial species with well-developed toepads. Many arboreal and scansorial species have larger finger pads than toe pads. It is from Cliffside camp, Kamiali on the EPCT of the mainland.
 ::: 
 
 
-# Cophixalus
+# _Cophixalus_
 
 ## _Cophixalus desticans_ (terrestrial)
 
@@ -86,14 +99,14 @@ Toepads of a scansorial species with clear toepads. Though the same genus as _Co
 
 ![_Cophixalus cheesmanae_](toepads/cliffside/Cophixalus cheesmanae 470_cliffside_IMG_1204.jpg)
 
-![Finger pad](toepads/cliffside/Cophixalus cheesmanae complex sp.2_finger_IMG_0635.jpg){#fig-cophcheesefing}
+![Finger pad](toepads/cliffside/Cophixalus cheesmanae complex sp.2_finger_IMG_0635.jpg)
 
-![Toe pad](toepads/cliffside/Cophixalus cheesmanae complex sp.2_toe_IMG_0636.jpg){#fig-cophcheesetoe}
+![Toe pad](toepads/cliffside/Cophixalus cheesmanae complex sp.2_toe_IMG_0636.jpg)
 
 _Cophixalus cheesemanae_ is a scansorial _Cophixalus_ often found on palms and even banana fronds. It is a good climber. From Cliffside camp, Kamiali, mainland Papua New Guinea. 
 :::
 
-# Oreophryne (arboreal)
+# _Oreophryne_ (arboreal)
 
 ## _Oreophryne B penelopia_
 
@@ -122,7 +135,7 @@ Toepads of a arboreal species with clear toepads outlined with dark, spotted tis
 :::
 
 
-# Hylophorbus (terrestrial)
+# _Hylophorbus_ (terrestrial)
 
 ::: {#fig-hylophorbus layout-ncol=3}
 
@@ -135,7 +148,7 @@ Toepads of a arboreal species with clear toepads outlined with dark, spotted tis
 Toepads of a terrestrial species from Buyetai, Normanby Island, PNG. This genus has hard to see toepads indicated by a dark gradient underlying the pad.
 :::
 
-# Liophryne (terrestrial)
+# _Liophryne_ (terrestrial)
 
 ::: {#fig-liophryne layout-ncol=3}
 
@@ -148,7 +161,7 @@ Toepads of a terrestrial species from Buyetai, Normanby Island, PNG. This genus 
 Toepads of a terrestrial species with obscure toepads. It is from Buyetai, Normanby Island, PNG.
 :::
 
-# Mantophryne (terrestrial)
+# _Mantophryne_ (terrestrial)
 
 ::: {#fig-mantophryne layout-ncol=3}
 
@@ -161,7 +174,7 @@ Toepads of a terrestrial species with obscure toepads. It is from Buyetai, Norma
 Toepads of a terrestrial species with small toepads surfacing the edge of their digits, attributed to them balancing on the tips of their fingers and toes. It is from Buyetai, Normanby Island, PNG.
 :::
 
-# Copiula (terrestrial)
+# _Copiula_ (terrestrial)
 
 ::: {#fig-copiula layout-ncol=3}
 
@@ -174,7 +187,7 @@ Toepads of a terrestrial species with small toepads surfacing the edge of their 
 Toepads of a terrestrial species with not well-developed toepads from Maru Ruama (Mt. Gerebu, mainland Papua New Guinea).
 :::
 
-# Paedophryne (terrestrial)
+# _Paedophryne_ (terrestrial)
 
 ::: {#fig-paedophryne layout-ncol=1}
 
@@ -183,7 +196,7 @@ Toepads of a terrestrial species with not well-developed toepads from Maru Ruama
 Toepads of a tiny jumping terrestrial species with shortened fingers and toes. No obvious toepads that are from Maru Ruama (Mt. Gerebu, mainland Papua New Guinea).
 :::
 
-# Barygenys (fossorial)
+# _Barygenys_ (fossorial)
 
 ::: {#fig-barygenys layout-ncol=3}
 
@@ -191,12 +204,12 @@ Toepads of a tiny jumping terrestrial species with shortened fingers and toes. N
 
 ![Finger pad](toepads/cliffside/Barygenys sp_finger_IMG_0629.jpg){#fig-barygenysfing}
 
-![Toe pad](toepads/cliffside/Barygenys sp._toe_IMG_0630.jpg){#fig-barygenystoe}
+![Toe pad](toepads/cliffside/Barygenys sp._toe_IMG_0630.jpg)
 
 _Barygenys sp._ is a small fossorial (burrowing) species. It is really hard to see toepads as this is a small species. The contrast has been adjusted here to see the slight difference in skin texture. From Cliffside camp, Kamiali. 
 :::
 
-# Callulops (fossorial)
+# _Callulops_ (fossorial)
 
 ::: {#fig-callulops layout-ncol=3}
 
@@ -210,7 +223,7 @@ _Callulops personatus_ is a large fossorial (burrowing) species. It is one of th
 :::
 
 
-# Genyophryne  (fossorial)
+# _Genyophryne_  (fossorial)
 
 ::: {#fig-genyophryne layout-ncol=3}
 
@@ -223,7 +236,7 @@ _Callulops personatus_ is a large fossorial (burrowing) species. It is one of th
 Toepads of a fossorial species with minimal toepads. It is from Buyetai, Normanby Island, PNG.
 :::
 
-# Xenorhina (fossorial)
+# _Xenorhina_ (fossorial)
 
 ::: {#fig-xenorhina layout-ncol=3}
 
