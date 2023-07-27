@@ -10,8 +10,8 @@ date: "`r format(Sys.Date())`"
 toc: true
 format: 
   html: 
-    embed-resources: true
-  pdf: default
+    embed-resources: false
+
 ---
 ```{r}
 #| echo: false
@@ -23,9 +23,22 @@ Toepads are modified pads on the tips of the toes and fingers of many species of
 
 Here are some photos that we took under a dissecting scope and 32x and with 6x magnification by the camera. 
 
-# Choerophryne
+# Austrochaperina (semi-aquatic)
 
-::: {#fig-choero layout-ncol=3}
+::: {#fig-austrochaperina layout-ncol=3}
+
+![_Austrochaperina palmipes_](toepads/buyetai/Austrochaperina_palmipes_537_buyetai_IMG_1701.jpg)
+
+![Finger pad](toepads/buyetai/Austrochaperina_palmipes_finger_IMG_0658.jpg)
+
+![Toe pad](toepads/buyetai/Austrochaperina_palmipes_toe_IMG_0659.jpg)
+
+Toepads of a semi-aquatic species with well-developed toepads. It is from Buyetai, Normanby Island, PNG.
+:::
+
+# Choerophryne (scansorial)
+
+::: {#fig-choerophryne layout-ncol=3}
 
 ![_Choerophryne sp. 2_ "fast clicker"](toepads/cliffside/Choerophryne_sp.2_fast_clicker_body_IMG_1262.JPG){#fig-choe2}
 
@@ -34,22 +47,160 @@ Here are some photos that we took under a dissecting scope and 32x and with 6x m
 ![Toe pad](toepads/cliffside/Choerophryne sp.2_toe_IMG_0634.jpg){#fig-choe2toe}
 
 Toepads of a scansorial species with well-developed toepads. Many arboreal and scansorial species have larger finger pads than toe pads. It is from Cliffside camp, Kamiali on the EPCT of the mainland.
-:::
+::: 
+
 
 # Cophixalus
 
-::: {#fig-cheese layout-ncol=2}
+## _Cophixalus desticans_ (terrestrial)
+
+::: {#fig-cophixalus layout-ncol=3}
+
+![_Cophixalus desticans_](toepads/buyetai/Cophixalus desticans 613_buyetai_IMG_1900.JPG)
+
+![Finger pad](toepads/buyetai/Cophixalus desticans complex sp.1_finger_IMG_0618.jpg)
+
+![Toe pad](toepads/buyetai/Cophixalus desticans complex sp.1_toe_IMG_0619.jpg)
+
+Toepads of a small terrestrial species with not well-developed toepads. It is from Buyetai, Normanby Island, PNG.
+:::
+
+## _Cophixalus verrucosus_ (scansorial)
+
+::: {#fig-cophixalus layout-ncol=3}
+
+![_Cophixalus verrucosus (a)_](toepads/buyetai/Cophixalus verrucosus 586_buyetai_IMG_1842.JPG)
+
+![Finger pad](toepads/buyetai/Cophixalus verrucosus complex sp.2_finger_IMG_0615.jpg)
+
+![Toe pad](toepads/buyetai/Cophixalus verrucosus complex sp.2_toe_IMG_0616.jpg)
+
+![_Cophixalus verrucosus (b)_](toepads/buyetai/Cophixalus verrucosus 588_buyetai_IMG_1852.JPG){fig-align="left"}
+
+Toepads of a scansorial species with clear toepads. Though the same genus as _Cophixalus desticans_, it has a very different lifestyle, requiring well-developed toepads. Species vary in coloration, as presented. It is from Buyetai, Normanby Island, PNG.
+:::
+
+## _Cophixalus cheesmanae_ (scansorial)
+
+::: {#fig-cheese layout-ncol=3}
+
+![_Cophixalus cheesmanae_](toepads/cliffside/Cophixalus cheesmanae 470_cliffside_IMG_1204.JPG)
 
 ![Finger pad](toepads/cliffside/Cophixalus cheesmanae complex sp.2_finger_IMG_0635.jpg){#fig-cophcheesefing}
 
 ![Toe pad](toepads/cliffside/Cophixalus cheesmanae complex sp.2_toe_IMG_0636.jpg){#fig-cophcheesetoe}
 
-_Cophixalus cheesemanae_ is a scansorial _Cophixalus_ often found on palms and even bananas. It is a good climber. From Cliffside camp, Kamiali. 
+_Cophixalus cheesemanae_ is a scansorial _Cophixalus_ often found on palms and even banana fronds. It is a good climber. From Cliffside camp, Kamiali, mainland Papua New Guinea. 
 :::
 
-# Callulops
+# Oreophryne (arboreal)
 
-::: {#fig-callulops layout-ncol=2}
+## _Oreophryne B penelopia_
+
+::: {#fig-oreophryne layout-ncol=3}
+
+![_Oreophryne B penelopia_](toepads/buyetai/Oreophryne_B_penelopia_680_buyetai_DSCN1298.JPG)
+
+![Finger pad](toepads/buyetai/Oreophryne_B_penelopia_finger_IMG_0665.jpg)
+
+![Toe pad](toepads/buyetai/Oreophryne_B_penelopia_toe_IMG_0669.jpg)
+
+Toepads of a arboreal species with visibly large toepads from Buyetai, Normanby Island, PNG. 
+:::
+
+## _Oreophryne A loriae_
+
+::: {#fig-oreophryne layout-ncol=3}
+
+![_Oreophryne A loriae_](toepads/gerebu/Oreophryne_loriae_198_gerebu_IMG_9921.JPG)
+
+![Finger pad](toepads/gerebu/Oreophryne_A_loriae_finger_IMG_0671.jpg)
+
+![Toe pad](toepads/gerebu/Oreophryne_A_loriae_toe_IMG_0672.jpg)
+
+Toepads of a arboreal species with clear toepads outlined with dark, spotted tissue. It is from Maru Ruama (Mt. Gerebu, mainland Papua New Guinea).
+:::
+
+
+# Hylophorbus (terrestrial)
+
+::: {#fig-hylophorbus layout-ncol=3}
+
+![_Hylophorbus cf. rufescens.1_](toepads/buyetai/Hylophorbus sp 557_buyetai_IMG_1607.JPG)
+
+![Finger pad](toepads/buyetai/Hylophorbus cf. rufescens.1_finger_IMG_0624.jpg)
+
+![Toe pad](toepads/buyetai/Hylophorbus cf. rufescens.1_toe_IMG_0625.jpg)
+
+Toepads of a terrestrial species from Buyetai, Normanby Island, PNG. This genus has hard to see toepads indicated by a dark gradient underlying the pad.
+:::
+
+# Liophryne (terrestrial)
+
+::: {#fig-liophryne layout-ncol=3}
+
+![_Liophryne dentata_](toepads/buyetai/Liophryne dentata 592_buyetai_IMG_1743.JPG)
+
+![Finger pad](toepads/buyetai/Liophryne_dentata_finger_IMG_0660.jpg)
+
+![Toe pad](toepads/buyetai/Liophryne_dentata_toe_IMG_0662.jpg)
+
+Toepads of a terrestrial species with obscure toepads. It is from Buyetai, Normanby Island, PNG.
+:::
+
+# Mantophryne (terrestrial)
+
+::: {#fig-mantophryne layout-ncol=3}
+
+![_Mantophryne cf. lateralis.1_](toepads/buyetai/Mantophryne lateralis 576_buyetai_IMG_1784.JPG)
+
+![Finger pad](toepads/buyetai/Mantophryne cf. lateralis.1_finger_IMG_0626.jpg)
+
+![Toe pad](toepads/buyetai/Mantophryne cf. lateralis.1_toe_IMG_0628.jpg)
+
+Toepads of a terrestrial species with small toepads surfacing the edge of their digits, attributed to them balancing on the tips of their fingers and toes. It is from Buyetai, Normanby Island, PNG.
+:::
+
+# Copiula (terrestrial)
+
+::: {#fig-copiula layout-ncol=3}
+
+![_Copiula sp.5_](toepads/gerebu/Copiula sp.5_ 334_gerebu_IMG_0555.JPG)
+
+![Finger pad](toepads/gerebu/Copiula sp.5_finger_IMG_0636.jpg)
+
+![Toe pad](toepads/gerebu/Copiula sp.5_toe_IMG_0639.jpg)
+
+Toepads of a terrestrial species with not well-developed toepads from Maru Ruama (Mt. Gerebu, mainland Papua New Guinea).
+:::
+
+# Paedophryne (terrestrial)
+
+::: {#fig-paedophryne layout-ncol=1}
+
+![_Paedophryne sp.1_](toepads/gerebu/Paedophryne_sp1_288_gerebu_IMG_0470.JPG)
+
+Toepads of a tiny jumping terrestrial species with shortened fingers and toes. No obvious toepads that are from Maru Ruama (Mt. Gerebu, mainland Papua New Guinea).
+:::
+
+# Barygenys (fossorial)
+
+::: {#fig-barygenys layout-ncol=3}
+
+![_Barygenys sp._](toepads/cliffside/Barygenys_sp._473_cliffside_IMG_1336.JPG)
+
+![Finger pad](toepads/cliffside/Barygenys sp_finger_IMG_0629.jpg){#fig-barygenysfing}
+
+![Toe pad](toepads/cliffside/Barygenys sp._toe_IMG_0630.jpg){#fig-barygenystoe}
+
+_Barygenys sp._ is a small fossorial (burrowing) species. It is really hard to see toepads as this is a small species. The contrast has been adjusted here to see the slight difference in skin texture. From Cliffside camp, Kamiali. 
+:::
+
+# Callulops (fossorial)
+
+::: {#fig-callulops layout-ncol=3}
+
+![_Callulops personatus_](toepads/cliffside/Callulops_personatus_352_cliffside_IMG_0684.JPG)
 
 ![Finger pad](toepads/cliffside/Callulops_personatus_finger_IMG_0654.jpg){#fig-callulopsfing}
 
@@ -59,16 +210,28 @@ _Callulops personatus_ is a large fossorial (burrowing) species. It is one of th
 :::
 
 
-# Barygenys
+# Genyophryne  (fossorial)
 
-::: {#fig-barygenys layout-ncol=2}
+::: {#fig-genyophryne layout-ncol=3}
 
-![Finger pad](toepads/cliffside/Barygenys sp_finger_IMG_0629.jpg){#fig-barygenysfing}
+![_Genyophryne thomsoni_](toepads/buyetai/Genyophryne thomsoni 625_buyetai_IMG_1563.JPG)
 
-![Toe pad](toepads/cliffside/Barygenys sp._toe_IMG_0630.jpg){#fig-barygenystoe}
+![Finger pad](toepads/buyetai/Genyophryne aff. thomsoni.2_finger_IMG_0622.jpg)
 
-_Barygenys sp._ is a small fossorial (burrowing) species. It is really hard to see toepads as this is a small species. The contrast has been adjusted here to see the slight difference in skin texture. From Cliffside camp, Kamiali. 
+![Toe pad](toepads/buyetai/Genyophryne aff. thomsoni.2_toe_IMG_0623.jpg)
+
+Toepads of a fossorial species with minimal toepads. It is from Buyetai, Normanby Island, PNG.
 :::
 
+# Xenorhina (fossorial)
 
+::: {#fig-xenorhina layout-ncol=3}
 
+![_Xenorhina sp.1_](toepads/gerebu/Xenorhina_sp.1_327_gerebu_IMG_0565.JPG)
+
+![Finger pad](toepads/gerebu/Xenorhina_sp.1_finger_IMG_0646.jpg)
+
+![Toe pad](toepads/gerebu/Xenorhina_sp.1_toe_IMG_0645.jpg)
+
+Toepads of a fossorial species with unclear toepads from Maru Ruama (Mt. Gerebu, mainland Papua New Guinea).
+:::
