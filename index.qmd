@@ -1,6 +1,6 @@
 ---
 title: "Asterophryinae Morphometrics"
-image: images/Cophixalus_variabilis.JPG
+image: images/Cophixalus_variabilis.jpg
 about:
   template: trestles
   links:

@@ -24,15 +24,15 @@ Toepads are modified pads on the tips of the toes and fingers of many species of
 
 Here are some photos that we took under a dissecting scope and 32x and with 6x magnification by the camera. 
 
-Frogs also use different postures with their toepads depending on lifestyle. Whereas arboreal and scansorial frogs often have them flat against the surface (like suction cups), terrestrial and fossorial species often have them flexed on their toe tips (@fig-toeposture). 
+Frogs also use different postures with their toepads depending on lifestyle. Whereas arboreal and scansorial frogs often have them flat against the surface (like suction cups), terrestrial and fossorial species often have them flexed (@fig-toeposture). 
 
 ::: {#fig-toeposture layout-ncol=2}
 
-![arboreal _Oreophryne B penelopia_](toepads/buyetai/Oreophryne_B_penelopia_680_buyetai_DSCN1298.jpg)
+![scansorial _Cophixalus variabilis_](images/Cophixalus_variabilis.jpg)
 
 ![fossorial _Xenorhina arboricola_](toepads/xenorhina_arboricola.jpg)
 
-Note how the arboreal species holds their toepads flat against the surface whereas terrestrial and fossorial species sometimes flex them on their toe tips
+Note how the arboreal species holds their toepads flat against the surface whereas terrestrial and fossorial species sometimes flex them on their finger tips
 :::
 
 
