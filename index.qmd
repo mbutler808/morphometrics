@@ -24,7 +24,7 @@ Please look over the definition of the measurements and [Landmarks](landmarks.qm
 
 ## Acknowledgements
 
-Many thanks to the many people who helped:
+Many thanks to everyone who helped:
 Julio Rivera who developed the landmarks and collected an extensive dataset. Ethan Hill and Claire Fraser contributed additional data. 
 Allison Fisher, Ke Cao, Diana Gao, and Kaitlyn Sato assisted with refining the landmarks.
 Allison Fisher and Marguerite Butler contributed to the formal definitions of the landmarks and the landmark document. Kaitlyn Sato photographed the toepads and assembled the toepad page. 
