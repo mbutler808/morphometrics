@@ -50,10 +50,11 @@ alldat %<>% mutate_at(c("measurer", "session", "jr"), as.factor) %>%
     mutate( shape = as.factor(shape))
 
 jrblock <- alldat[alldat$measurer=="JR",]  # copy JR data into all sessions (0,1,2)
-jrblock2 <- jrblock0 <- jrblock
+jrblock3 <- jrblock2 <- jrblock0 <- jrblock
 jrblock0$session <- 0    
 jrblock2$session <- 2
-alldat <- rbind(alldat, jrblock0, jrblock2)
+jrblock3$session <- 3
+alldat <- rbind(alldat, jrblock0, jrblock2, jrblock3)
 ```
 
 ## Repeatability 
@@ -70,6 +71,7 @@ ms_among <- mod[[1]][1,3]
 s2_among <- (ms_among-ms_within)/2
 ME <- s2_within/(s2_within+s2_among) * 100
 ME
+
 ```
 
 # Functions 
@@ -615,6 +617,8 @@ wrap_violin(tibv)
 #| warning: false
 wrap_violin(tarv)
 ```
+
+For round 3, I (MB) measured only the tarsus bone length and not the tarsus segment length. It seems JR measured the limb segment. 
 
 ### Foot
 ```{r}
